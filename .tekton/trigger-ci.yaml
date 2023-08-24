@@ -22,7 +22,7 @@ spec:
       value: "{{ repo_url }}"
     - name: revision
       value: "{{ revision }}"
-    - name: image
+    - name: app-image
       value: "hello-sprint:latest"
   pipelineRef:
     name: flask-ci-pipeline

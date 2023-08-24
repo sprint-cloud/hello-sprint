@@ -39,5 +39,5 @@ spec:
     secret:
       secretName: "{{ git_auth_secret }}"
   - name: dockerconfig
-    secret":
+    secret:
       secretName: "dockerconfig"

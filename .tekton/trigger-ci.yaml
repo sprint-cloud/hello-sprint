@@ -8,6 +8,10 @@ metadata:
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/max-keep-runs: "1"
     pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/sprint-cloud/pipelines/main/flask-apps/base/flask-ci-pipeline.yaml"
+    pipelinesascode.tekton.dev/task: "git-clone"
+    pipelinesascode.tekton.dev/task-1: "pylint"
+    pipelinesascode.tekton.dev/task-2: "pytest"
+    pipelinesascode.tekton.dev/task-3: "kaniko"
 spec:
   podTemplate:
     securityContext:

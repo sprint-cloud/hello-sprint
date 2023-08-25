@@ -9,9 +9,10 @@ metadata:
     pipelinesascode.tekton.dev/max-keep-runs: "1"
     pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/sprint-cloud/pipelines/main/pipelines/flask-ci-pipeline.yaml"
     pipelinesascode.tekton.dev/task: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/git-clone.yaml]"
-    pipelinesascode.tekton.dev/task-1: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pylint.yaml]"
-    pipelinesascode.tekton.dev/task-2: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pytest.yaml]"
-    pipelinesascode.tekton.dev/task-3: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/kaniko.yaml]"
+    pipelinesascode.tekton.dev/task-1: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/init-venv.yaml]"
+    pipelinesascode.tekton.dev/task-2: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pylint.yaml]"
+    pipelinesascode.tekton.dev/task-3: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pytest.yaml]"
+    pipelinesascode.tekton.dev/task-4: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/kaniko.yaml]"
 spec:
   podTemplate:
     securityContext:
@@ -29,6 +30,14 @@ spec:
     name: flask-ci-pipeline
   workspaces:
   - name: source
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: venv
     volumeClaimTemplate:
       spec:
         accessModes:

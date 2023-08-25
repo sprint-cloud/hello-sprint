@@ -7,11 +7,11 @@ metadata:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/max-keep-runs: "1"
-    pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/sprint-cloud/pipelines/main/flask-apps/base/flask-ci-pipeline.yaml"
-    pipelinesascode.tekton.dev/task: "git-clone"
-    pipelinesascode.tekton.dev/task-1: "pylint"
-    pipelinesascode.tekton.dev/task-2: "pytest"
-    pipelinesascode.tekton.dev/task-3: "kaniko"
+    pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/sprint-cloud/pipelines/main/pipelines/flask-ci-pipeline.yaml"
+    pipelinesascode.tekton.dev/task: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/git-clone.yaml]"
+    pipelinesascode.tekton.dev/task-1: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pylint.yaml]"
+    pipelinesascode.tekton.dev/task-2: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pytest.yaml]"
+    pipelinesascode.tekton.dev/task-3: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/kaniko.yaml]"
 spec:
   podTemplate:
     securityContext:

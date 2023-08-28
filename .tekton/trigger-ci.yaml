@@ -32,7 +32,7 @@ spec:
     - name: app-name
       value: "hellosprint"
     - name: testing
-      value: false
+      value: "true"
     - name: release-env
       value: "staging"
   pipelineRef:

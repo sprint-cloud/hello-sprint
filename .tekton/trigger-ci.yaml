@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: hello-sprint-ci
+  name: hello-sprint-ci 
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
@@ -25,7 +25,7 @@ spec:
     - name: revision
       value: "{{ revision }}"
     - name: app-image
-      value: "ghcr.io/sprint-cloud/hello-sprint:latest"
+      value: "ghcr.io/sprint-cloud/hello-sprint:{{ release }}"
     - name: app-name
       value: "hellosprint"
   pipelineRef:

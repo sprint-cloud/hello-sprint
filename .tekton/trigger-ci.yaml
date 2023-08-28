@@ -35,8 +35,9 @@ spec:
       value: "staging"
     - name: stages
       value:
-        - build
-        - release
+        testing: "false"
+        build: "true"
+        release: "true"
   pipelineRef:
     name: flask-ci-pipeline
   workspaces:

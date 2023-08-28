@@ -13,25 +13,38 @@ metadata:
     pipelinesascode.tekton.dev/task-2: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pylint.yaml]"
     pipelinesascode.tekton.dev/task-3: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pytest.yaml]"
     pipelinesascode.tekton.dev/task-4: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/kaniko.yaml]"
+    pipelinesascode.tekton.dev/task-4: "git-cli"
 spec:
   podTemplate:
     securityContext:
       fsGroup: 65532
       runAsNonRoot: false
-      runAsUser: 1000
+      #runAsUser: 1000
   params:
     - name: repo_url
       value: "{{ repo_url }}"
     - name: revision
       value: "{{ revision }}"
     - name: app-image
-      value: "ghcr.io/sprint-cloud/hello-sprint:{{ revision }}"
+      value: "ghcr.io/sprint-cloud/hello-sprint"
+    - name: app-image-tag
+      value: "{{ revision }}"
     - name: app-name
       value: "hellosprint"
+    - name: env
+      value: "staging"
   pipelineRef:
     name: flask-ci-pipeline
   workspaces:
   - name: source
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: app-manifests
     volumeClaimTemplate:
       spec:
         accessModes:
@@ -45,3 +58,6 @@ spec:
   - name: dockerconfig
     secret:
       secretName: "dockerconfig"
+  - name: ssh-creds
+    secret:
+      secretName: ssh-creds-release

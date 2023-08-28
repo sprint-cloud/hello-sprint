@@ -33,6 +33,10 @@ spec:
       value: "hellosprint"
     - name: env
       value: "staging"
+    - name: stages
+      value:
+        - build
+        - release
   pipelineRef:
     name: flask-ci-pipeline
   workspaces:

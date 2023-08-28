@@ -31,13 +31,10 @@ spec:
       value: "{{ revision }}"
     - name: app-name
       value: "hellosprint"
-    - name: env
+    - name: testing
+      value: false
+    - name: release-env
       value: "staging"
-    - name: stages
-      value:
-        testing: "false"
-        build: "true"
-        release: "true"
   pipelineRef:
     name: flask-ci-pipeline
   workspaces:

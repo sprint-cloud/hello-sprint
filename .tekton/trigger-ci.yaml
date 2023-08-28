@@ -26,6 +26,8 @@ spec:
       value: "{{ revision }}"
     - name: app-image
       value: "hello-sprint:latest"
+    - name: app-name
+      value: "hellosprint"
   pipelineRef:
     name: flask-ci-pipeline
   workspaces:

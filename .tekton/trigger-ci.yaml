@@ -13,7 +13,7 @@ metadata:
     pipelinesascode.tekton.dev/task-2: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pylint.yaml]"
     pipelinesascode.tekton.dev/task-3: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/pytest.yaml]"
     pipelinesascode.tekton.dev/task-4: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/kaniko.yaml]"
-    pipelinesascode.tekton.dev/task-5: "git-cli"
+    pipelinesascode.tekton.dev/task-5: "[https://raw.githubusercontent.com/sprint-cloud/pipelines/main/tasks/git-cli.yaml]"
 spec:
   podTemplate:
     securityContext:

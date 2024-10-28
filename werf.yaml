@@ -1,0 +1,5 @@
+project: hello-sprint
+configVersion: 1
+---
+image: hello-sprint
+dockerfile: Dockerfile

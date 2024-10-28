@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "hello-sprint.fullname" . }}-test-connection"
+  labels:
+    {{- include "hello-sprint.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "hello-sprint.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

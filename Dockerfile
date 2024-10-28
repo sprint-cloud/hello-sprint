@@ -1,11 +1,10 @@
 FROM python:3.10-alpine
 
-WORKDIR /app
+WORKDIR /src
 
-COPY . .
+COPY requirements.txt .
+COPY ./app /src/app
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-RUN pip install -r requirements.txt
-
-EXPOSE 5000
-
-CMD ["flask", "--app", "hellosprint",  "run", "--host", "0.0.0.0", "--port",  "5000"]
+EXPOSE 8080
+CMD ["fastapi", "run", "app/main.py", "--port", "8080"]

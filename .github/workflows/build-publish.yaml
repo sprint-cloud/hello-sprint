@@ -1,0 +1,35 @@
+name: Create App Release
+
+on:
+  push:
+    branches: ['main']
+
+env:
+  WERF_REPO: ghcr.io/$(( github.repository ))
+  IMAGE_NAME: $(( github.repository ))
+
+jobs:
+  build-and-publish-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install werf
+        uses: werf/actions/install@v2
+      
+      - name: Publish Release
+        run: |
+          . $(werf ci-env github --as-file)
+          werf build
+          werf publish
+        env:
+          WERF_ENV: production
+          GITHUB_TOKEN: ${{ github.token }}

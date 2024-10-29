@@ -25,8 +25,9 @@ jobs:
         run: |
           . $(werf ci-env github --as-file)
           WERD_REPO=ghcr.io/$(( github.repository ))
+
           werf build
-          werf bundle publish
+          werf bundle publish --tag 0.0.${{github.run_id}}
         env:
           WERF_ENV: production
           GITHUB_TOKEN: ${{ github.token }}

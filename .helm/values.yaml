@@ -29,7 +29,7 @@ podLabels: {}
 
 podSecurityContext:
   seccompProfile:
-    type: runtimeDefault
+    type: RuntimeDefault
 
 securityContext:
   drop:

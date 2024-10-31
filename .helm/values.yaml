@@ -54,8 +54,8 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls: 
-    hosts:
-      - hellosprint.app.sprinthub.nl
+    - hosts:
+        - hellosprint.app.sprinthub.nl
 
 resources:
   limits:

@@ -12,8 +12,6 @@ jobs:
       packages: write
       attestations: write
       id-token: write
-    env:
-      WERF_REPO: ghcr.io/${{ github.repository }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,5 +28,6 @@ jobs:
           werf build
           werf bundle publish --tag 0.0.${{github.run_id}}
         env:
+          WERF_REPO: ghcr.io/${{ github.repository }}
           WERF_ENV: production
           GITHUB_TOKEN: ${{ github.token }}

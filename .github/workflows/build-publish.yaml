@@ -13,7 +13,7 @@ jobs:
       attestations: write
       id-token: write
     env:
-      WERF_REPO: ghcr.io/$(( github.repository ))
+      WERF_REPO: ghcr.io/${{ github.repository }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

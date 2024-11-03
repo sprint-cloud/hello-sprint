@@ -13,7 +13,7 @@ jobs:
       attestations: write
       id-token: write
     env:
-      WERD_REPO: ghcr.io/sprint-cloud
+      WERF_REPO: ghcr.io/sprint-cloud
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
